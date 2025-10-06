@@ -1,0 +1,23 @@
+{
+  "name": "edge-feed-enhancer",
+  "version": "1.0.0",
+  "description": "Replace Edge's news feed with educational content: word of the day, math formulas, and inspirational quotes",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "keywords": [
+    "edge",
+    "extension",
+    "browser-addon",
+    "education",
+    "quotes"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "typescript": "^5.5.0"
+  }
+}
+

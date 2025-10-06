@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="styles/content.css">
+</head>
+<body>
+    <div id="edge-feed-enhancer" class="efe-container">
+        <div class="efe-content">
+            <header class="efe-header">
+                <h1 class="efe-title">Your Daily Dose of Knowledge</h1>
+                <div class="efe-header-actions">
+                    <button id="theme-toggle" class="efe-theme-toggle" title="Toggle theme" aria-label="Toggle light/dark mode">
+                        <svg class="efe-sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <svg class="efe-moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    <a href="https://github.com/taypaycode/new_edge" target="_blank" class="efe-github-link" title="View on GitHub">
+                        <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </header>
+            
+            <div class="efe-grid">
+                <div class="efe-card efe-word-card">
+                    <div class="efe-card-header">
+                        <h2 class="efe-card-title">Word of the Day</h2>
+                    </div>
+                    <div class="efe-card-content">
+                        <div class="efe-word-main">
+                            <span class="efe-word-text" id="word-text"></span>
+                            <span class="efe-word-pos" id="word-pos"></span>
+                        </div>
+                        <p class="efe-definition" id="word-definition"></p>
+                        <div class="efe-example">
+                            <span class="efe-example-label">Example:</span>
+                            <p class="efe-example-text" id="word-example"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="efe-card efe-math-card">
+                    <div class="efe-card-header">
+                        <h2 class="efe-card-title">Math Formula</h2>
+                    </div>
+                    <div class="efe-card-content">
+                        <h3 class="efe-math-title" id="math-title"></h3>
+                        <div class="efe-formula" id="math-formula"></div>
+                        <p class="efe-math-explanation" id="math-explanation"></p>
+                    </div>
+                </div>
+                
+                <div class="efe-card efe-quote-card">
+                    <div class="efe-card-header">
+                        <h2 class="efe-card-title">Daily Inspiration</h2>
+                    </div>
+                    <div class="efe-card-content">
+                        <blockquote class="efe-quote-text" id="quote-text"></blockquote>
+                        <cite class="efe-quote-author" id="quote-author"></cite>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="efe-footer">
+                <p class="efe-footer-text">Content refreshes daily | Open source on GitHub</p>
+            </footer>
+        </div>
+    </div>
+
+    <script type="module" src="dist/main.js"></script>
+</body>
+</html>
+

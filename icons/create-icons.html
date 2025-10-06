@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Extension Icons</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        canvas { border: 1px solid #ccc; margin: 1rem 0; }
+        button { 
+            background: #667eea; 
+            color: white; 
+            border: none; 
+            padding: 0.75rem 1.5rem; 
+            border-radius: 6px; 
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem;
+        }
+        button:hover { background: #5568d3; }
+        .icon-container { margin: 2rem 0; }
+        h2 { color: #333; }
+        p { color: #666; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <h1>Extension Icon Generator</h1>
+    <p>Click the button below to generate and download the required icon files for the extension.</p>
+    
+    <div class="icon-container">
+        <h2>Preview:</h2>
+        <canvas id="preview" width="128" height="128"></canvas>
+    </div>
+    
+    <button onclick="generateIcons()">Generate & Download Icons</button>
+    
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Book
+            const bookWidth = size * 0.4;
+            const bookHeight = size * 0.35;
+            const bookX = (size - bookWidth) / 2;
+            const bookY = size * 0.35;
+            
+            ctx.fillStyle = 'white';
+            ctx.fillRect(bookX, bookY, bookWidth, bookHeight);
+            
+            // Book spine
+            ctx.fillStyle = '#e0e0e0';
+            ctx.fillRect(bookX + bookWidth/2 - 2, bookY, 4, bookHeight);
+            
+            // Lightbulb
+            const bulbRadius = size * 0.09;
+            const bulbX = size / 2;
+            const bulbY = size * 0.23;
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(bulbX, bulbY, bulbRadius, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Bulb base
+            ctx.fillRect(bulbX - 4, bulbY + bulbRadius, 8, size * 0.05);
+            
+            // Sparkles
+            ctx.fillStyle = 'white';
+            const sparkleSize = size * 0.015;
+            ctx.beginPath();
+            ctx.arc(bulbX - size * 0.15, bulbY - size * 0.03, sparkleSize, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(bulbX + size * 0.15, bulbY - size * 0.03, sparkleSize, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Draw preview
+        drawIcon(document.getElementById('preview'), 128);
+        
+        function generateIcons() {
+            const sizes = [16, 48, 128];
+            
+            sizes.forEach(size => {
+                const canvas = document.createElement('canvas');
+                drawIcon(canvas, size);
+                
+                canvas.toBlob(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `icon${size}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                });
+            });
+            
+            alert('Icons generated! Check your downloads folder for icon16.png, icon48.png, and icon128.png. Move them to the icons/ folder.');
+        }
+    </script>
+</body>
+</html>
+
